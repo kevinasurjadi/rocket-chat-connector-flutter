@@ -28,4 +28,20 @@ class UserService {
     }
     throw RocketChatException(response.body);
   }
+
+  Future<User> register(UserNew userNew) async {
+    http.Response response = await _httpService.post(
+      '/api/v1/users.register',
+      jsonEncode(userNew.toMap()),
+    );
+
+    if (response.statusCode == 200) {
+      if (response.body.isNotEmpty == true) {
+        return User.fromMap(jsonDecode(response.body));
+      } else {
+        return User();
+      }
+    }
+    throw RocketChatException(response.body);
+  }
 }
