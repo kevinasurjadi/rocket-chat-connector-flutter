@@ -32,7 +32,7 @@ class UserService {
   Future<User> register(UserNew userNew) async {
     http.Response response = await _httpService.post(
       '/api/v1/users.register',
-      jsonEncode(userNew.toMap()),
+      jsonEncode(userNew.toMapForRegister()),
       null,
     );
 
