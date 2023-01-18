@@ -33,6 +33,7 @@ class UserService {
     http.Response response = await _httpService.post(
       '/api/v1/users.register',
       jsonEncode(userNew.toMap()),
+      null,
     );
 
     if (response.statusCode == 200) {
